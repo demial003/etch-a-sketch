@@ -1,5 +1,11 @@
 const btns = document.querySelector('#buttons')
 let grid = false
+let color;
+
+const colorwheel = document.getElementById('colorwheel')
+colorwheel.addEventListener('input', () =>{
+    color = colorwheel.value
+})
 
 const btn1 = document.createElement('button')
 btn1.classList.add('settings')
@@ -7,7 +13,8 @@ btn1.textContent = "Change Size"
 btns.appendChild(btn1)
 let size;
 btn1.addEventListener('click', () => {
-    size = Number(prompt('enter a size:'))
+    size = Number(prompt('enter a size: (max 100)'))
+    if(size > 100) size = 100
     if(grid){
         removeGrid()
     }
@@ -48,6 +55,7 @@ btn5.textContent = "Clear"
 btns.appendChild(btn5)
 
 
+
 function createGrid(size){
     const container = document.querySelector('#container')
     for(let i = 0; i < size; i++){
@@ -75,7 +83,7 @@ function draw(){
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
     box.addEventListener('mouseover', (e) =>{
-        e.target.style.backgroundColor = 'grey'
+        e.target.style.backgroundColor = color
     })
 });
 }
