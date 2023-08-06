@@ -113,7 +113,9 @@ function drawRainbow(){
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
     box.addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = randomColor()
+        if(mousedown){
+            e.target.style.backgroundColor = randomColor()
+        }
     })
 });
 }
