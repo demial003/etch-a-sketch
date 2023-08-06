@@ -134,7 +134,9 @@ function erase(){
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
     box.addEventListener('mouseover', (e) =>{
-        e.target.style.backgroundColor = 'black'
+        if(mousedown){
+            e.target.style.backgroundColor = 'black'
+        }
     })
 });
 }
