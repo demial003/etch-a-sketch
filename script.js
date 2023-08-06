@@ -30,13 +30,17 @@ btn2.textContent = "Color Mode"
 btns.appendChild(btn2)
 
 btn2.addEventListener('click', () => {
-    draw()
+    draw(color)
 })
 
 const btn4 = document.createElement('button')
 btn4.classList.add('settings')
 btn4.textContent = "Rainbow Mode"
 btns.appendChild(btn4)
+
+btn4.addEventListener('click', () => {
+    drawRainbow()
+})
 
 const btn3 = document.createElement('button')
 btn3.classList.add('settings')
@@ -86,7 +90,7 @@ function removeGrid(){
     cols.forEach(col => col.remove())
 }
 
-function draw(){
+function draw(color){
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
     box.addEventListener('mouseover', (e) =>{
@@ -94,6 +98,26 @@ function draw(){
     })
 });
 }
+
+function drawRainbow(){
+    const boxes = document.querySelectorAll('div.boxes')
+    boxes.forEach(box => {
+    box.addEventListener('mouseover', (e) => {
+        e.target.style.backgroundColor = randomColor()
+    })
+});
+}
+
+function randomColor(){
+    let r = Math.floor(Math.random() * 256)
+    let g = Math.floor(Math.random() * 256)
+    let b = Math.floor(Math.random() * 256)
+    let newColor = `rgb(${r}, ${g}, ${b})`
+    return newColor
+    
+}
+
+
 
 function erase(){
     const boxes = document.querySelectorAll('div.boxes')
