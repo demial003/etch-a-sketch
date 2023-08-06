@@ -4,6 +4,7 @@ body{
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
+    background-color: darkgrey;
 }
 
 #content{
@@ -15,8 +16,10 @@ body{
 #container{
     border: 5px solid black;
     display: flex;
-    width: 704px;
-    height: 704px;
+    width: 674px;
+    height: 674px;
+    margin-bottom: 30px;
+    background-color: black;
 }
 
 .col{
