@@ -19,8 +19,6 @@ btn1.addEventListener('click', () => {
         removeGrid()
     }
     createGrid(size)
-    console.log(`${size} x ${size}`)
-    console.log(grid)
 })
 
 
@@ -58,6 +56,7 @@ btn5.classList.add('settings')
 btn5.textContent = "Clear"
 btns.appendChild(btn5)
 
+
 btn5.addEventListener('click', () => {
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
@@ -90,13 +89,24 @@ function removeGrid(){
     cols.forEach(col => col.remove())
 }
 
+let mousedown = false;
+const body = document.querySelector('body')
+body.addEventListener('mousedown', () => {
+    mousedown = true
+}) 
+body.addEventListener('mouseup', () => {
+    mousedown = false
+})
+
 function draw(color){
     const boxes = document.querySelectorAll('div.boxes')
     boxes.forEach(box => {
-    box.addEventListener('mouseover', (e) =>{
-        e.target.style.backgroundColor = color
-    })
-});
+        box.addEventListener('mouseover', (e) =>{
+            if(mousedown){
+                e.target.style.backgroundColor = color
+            }
+        })
+    });
 }
 
 function drawRainbow(){
@@ -114,7 +124,6 @@ function randomColor(){
     let b = Math.floor(Math.random() * 256)
     let newColor = `rgb(${r}, ${g}, ${b})`
     return newColor
-    
 }
 
 
