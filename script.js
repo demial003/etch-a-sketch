@@ -3,7 +3,7 @@ let grid = false
 let color;
 
 const colorwheel = document.getElementById('colorwheel')
-colorwheel.addEventListener('input', () =>{
+colorwheel.addEventListener('input', () => {
     color = colorwheel.value
 })
 
@@ -53,6 +53,13 @@ const btn5 = document.createElement('button')
 btn5.classList.add('settings')
 btn5.textContent = "Clear"
 btns.appendChild(btn5)
+
+btn5.addEventListener('click', () => {
+    const boxes = document.querySelectorAll('div.boxes')
+    boxes.forEach(box => {
+        box.style.backgroundColor = 'black'
+    })
+})
 
 
 
